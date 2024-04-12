@@ -1,5 +1,5 @@
 {
-  "name": "ufv-tools",
+  "name": "scholarship-finder",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -41,6 +41,7 @@
     "postcss": "^8.4.38",
     "tailwind-merge": "^2.2.2",
     "tailwind-variants": "^0.2.1",
-    "tailwindcss": "^3.4.3"
+    "tailwindcss": "^3.4.3",
+    "zod": "^3.22.4"
   }
 }
