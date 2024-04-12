@@ -1,7 +1,10 @@
 <script>
+	import { ModeWatcher } from 'mode-watcher';
 	import '../app.css';
 </script>
 
-<div class="h-dvh flex flex-col">
+<ModeWatcher />
+
+<div class="flex h-dvh flex-col">
 	<slot />
 </div>
