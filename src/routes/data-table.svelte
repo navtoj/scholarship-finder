@@ -56,7 +56,7 @@
 				<Table.Row>
 					{#each headerRow.cells as cell (cell.id)}
 						<Subscribe attrs={cell.attrs()} let:attrs props={cell.props()}>
-							<Table.Head {...attrs} class="nth-last-2:text-right last:w-8">
+							<Table.Head {...attrs} class="last:w-8 nth-last-2:text-right">
 								<Render of={cell.render()} />
 							</Table.Head>
 						</Subscribe>
@@ -71,7 +71,7 @@
 				<Table.Row {...rowAttrs}>
 					{#each row.cells as cell (cell.id)}
 						<Subscribe attrs={cell.attrs()} let:attrs>
-							<Table.Cell {...attrs} class="nth-last-2:text-right last:py-0 last:pl-0">
+							<Table.Cell {...attrs} class="last:py-0 last:pl-0 nth-last-2:text-right">
 								<Render of={cell.render()} />
 							</Table.Cell>
 						</Subscribe>
