@@ -1,19 +1,22 @@
 <script lang="ts">
 	import { Button } from '$lib/components/ui/button';
-	import { Separator } from '$lib/components/ui/separator';
+	import ExternalLink from 'lucide-svelte/icons/external-link';
 </script>
 
 <header
-	class="sticky top-0 flex items-center justify-between gap-4 border-b bg-background bg-muted/40 pl-4"
+	class="sticky top-0 flex items-center justify-between gap-4 border-b bg-background bg-muted/40 px-4"
 >
-	<div class="flex h-full items-center text-lg leading-none">
-		<h1 class="mr-4 font-semibold">Scholarship Finder</h1>
-		<Separator orientation="vertical" />
+	<div class="flex h-full items-center text-lg leading-none gap-4">
+		<h1 class="font-semibold">Scholarship Finder</h1>
+		<!-- <Separator orientation="vertical" /> -->
 		<Button class="" href="https://www.ufv.ca" variant="link"
 			>University of the Fraser Valley</Button
 		>
 	</div>
 	<div class="flex h-full items-center">
-		<Button class="" href="https://github.com/navtoj" variant="link">Credits</Button>
+		<Button class="h-6 gap-1.5 px-1.5 py-0" href="https://github.com/navtoj" variant="ghost">
+			Credits
+			<ExternalLink size="1rem" />
+		</Button>
 	</div>
 </header>

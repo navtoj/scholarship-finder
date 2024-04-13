@@ -61,6 +61,11 @@ const config = {
 		}
 	},
 	plugins: [
+		plugin(function ({ addVariant }) {
+			addVariant('not-first-last', '&:not(:first-child,:last-child)');
+			addVariant('first-last', ['&:first-child', '&:last-child']);
+			// addVariant('inverted-colors', '@media (inverted-colors: inverted)');
+		}),
 		plugin(function ({ matchVariant }) {
 			matchVariant(
 				'nth',

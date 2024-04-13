@@ -3,7 +3,7 @@
 	import * as DropdownMenu from '$lib/components/ui/dropdown-menu';
 	import Ellipsis from 'lucide-svelte/icons/ellipsis';
 
-	export let id: string;
+	export let code: string;
 </script>
 
 <DropdownMenu.Root>
@@ -16,7 +16,7 @@
 	<DropdownMenu.Content>
 		<DropdownMenu.Group>
 			<DropdownMenu.Label>Actions</DropdownMenu.Label>
-			<DropdownMenu.Item on:click={() => navigator.clipboard.writeText(id)}>
+			<DropdownMenu.Item on:click={() => navigator.clipboard.writeText(code)}>
 				Copy payment ID
 			</DropdownMenu.Item>
 		</DropdownMenu.Group>
