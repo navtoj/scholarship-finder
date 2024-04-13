@@ -1,5 +1,6 @@
 import type { Config } from 'tailwindcss';
 import { fontFamily } from 'tailwindcss/defaultTheme';
+import plugin from 'tailwindcss/plugin';
 
 const config = {
 	darkMode: ['class'],
@@ -58,7 +59,39 @@ const config = {
 				sans: [...fontFamily.sans]
 			}
 		}
-	}
+	},
+	plugins: [
+		plugin(function ({ matchVariant }) {
+			matchVariant(
+				'nth',
+				(value) => {
+					return `&:nth-child(${value})`;
+				},
+				{
+					values: {
+						2: '2',
+						3: '3',
+						4: '4'
+					}
+				}
+			);
+		}),
+		plugin(function ({ matchVariant }) {
+			matchVariant(
+				'nth-last',
+				(value) => {
+					return `&:nth-last-child(${value})`;
+				},
+				{
+					values: {
+						2: '2',
+						3: '3',
+						4: '4'
+					}
+				}
+			);
+		})
+	]
 } as const satisfies Config;
 
 export default config;

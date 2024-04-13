@@ -12,14 +12,14 @@ export const Scholarships = z
 		amount: z
 			.string()
 			.startsWith('$')
-			// .transform((v) => {
-			// 	// remove dollar sign
-			// 	v = v.slice(1);
-			// 	// remove comma
-			// 	v = v.replaceAll(',', '');
-			// 	// convert to number
-			// 	return Number(v);
-			// })
+			.transform((v) => {
+				// remove dollar sign
+				v = v.slice(1);
+				// remove comma
+				v = v.replaceAll(',', '');
+				// convert to number
+				return Number(v);
+			})
 			.nullable(),
 		selectionProcess: NonEmptyString,
 		applicationMethod: NonEmptyString,
