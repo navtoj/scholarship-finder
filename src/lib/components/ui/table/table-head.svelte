@@ -1,19 +1,19 @@
 <script lang="ts">
-	import type { HTMLThAttributes } from "svelte/elements";
-	import { cn } from "$lib/components/utils.js";
+	import { cn } from '$lib/components/utils.js';
+	import type { HTMLThAttributes } from 'svelte/elements';
 
 	type $$Props = HTMLThAttributes;
 
-	let className: $$Props["class"] = undefined;
+	let className: $$Props['class'] = undefined;
 	export { className as class };
 </script>
 
-<th
+<div
 	class={cn(
-		"h-10 px-2 text-left align-middle font-medium text-muted-foreground [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]",
+		'table-cell h-10 px-2 text-left align-middle font-medium text-muted-foreground [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]',
 		className
 	)}
 	{...$$restProps}
 >
 	<slot />
-</th>
+</div>
