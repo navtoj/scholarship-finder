@@ -25,3 +25,18 @@
 		<DropdownMenu.Item>View payment details</DropdownMenu.Item>
 	</DropdownMenu.Content>
 </DropdownMenu.Root>
+
+<!--
+	table.column({
+		accessor: 'code',
+		header: '',
+		cell: ({ value }) => {
+			return createRender(DataTableActions, { code: value });
+		},
+		plugins: {
+			sort: {
+				disable: true
+			}
+		}
+	})
+ -->

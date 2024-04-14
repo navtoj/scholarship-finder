@@ -11,6 +11,7 @@
 	<MonitorSmartphone size={28} />
 	<p>Screen too small.</p>
 </div>
+
 <div class="hidden h-dvh flex-col lg:flex">
 	<Header />
 	<slot />

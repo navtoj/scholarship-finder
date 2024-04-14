@@ -8,7 +8,7 @@
 	import { createTable, Render, Subscribe } from 'svelte-headless-table';
 	import { addColumnFilters, addSortBy, addTableFilter } from 'svelte-headless-table/plugins';
 	import { readable } from 'svelte/store';
-	import DataTableHeader from './data-table-header.svelte';
+	import DataTableBar from './data-table-bar.svelte';
 
 	export let scholarships: Scholarships;
 
@@ -23,12 +23,12 @@
 	const columns = table.createColumns([
 		table.column({
 			accessor: 'type',
-			header: 'Type',
-			plugins: {
-				sort: {
-					disable: true
-				}
-			}
+			header: 'Type'
+			// plugins: {
+			// 	sort: {
+			// 		disable: true
+			// 	}
+			// }
 		}),
 		table.column({
 			accessor: 'name',
@@ -57,28 +57,27 @@
 						if (a === null) return -1;
 						// a > b
 						if (b === null) return 1;
-						// sort by value
-						return a - b;
+						// check if a and b are numbers
+						if (typeof a === 'number' && typeof b === 'number') {
+							// sort by numeric value
+							return a - b;
+						}
+						// sort as strings
+						const first = `${a}`;
+						const second = `${b}`;
+						return first.localeCompare(second);
 					}
 				}
 			}
+		}),
+		table.column({
+			accessor: 'applyTo',
+			header: 'Application Method'
 		})
-		// table.column({
-		// 	accessor: 'code',
-		// 	header: '',
-		// 	cell: ({ value }) => {
-		// 		return createRender(DataTableActions, { code: value });
-		// 	},
-		// 	plugins: {
-		// 		sort: {
-		// 			disable: true
-		// 		}
-		// 	}
-		// })
 	]);
 
-	const tableViewModel = table.createViewModel(columns);
-	const { headerRows, pageRows, tableAttrs, tableBodyAttrs, pluginStates } = tableViewModel;
+	const { headerRows, pageRows, tableAttrs, tableBodyAttrs, pluginStates } =
+		table.createViewModel(columns);
 
 	const { filterValue } = pluginStates.filter;
 	$: console.log('filterValue', $filterValue);
@@ -87,9 +86,7 @@
 	$: console.log('filterValues', $filterValues);
 </script>
 
-<DataTableHeader {filterValue} />
-
-<Table.Root {...$tableAttrs}>
+<Table.Root {...$tableAttrs} class="mb-12">
 	<Table.Header class="sticky top-0 bg-background shadow-sm dark:shadow-accent">
 		{#each $headerRows as headerRow}
 			<Subscribe rowAttrs={headerRow.attrs()}>
@@ -98,7 +95,7 @@
 						<Subscribe attrs={cell.attrs()} let:attrs props={cell.props()} let:props>
 							<Table.Head
 								{...attrs}
-								class="group/th last:text-right not-first-last:w-full first-last:text-nowrap {props
+								class="group/th last:text-right not-first-last:w-full first-last:text-nowrap nth-last-2:text-nowrap {props
 									.sort.disabled
 									? ''
 									: 'p-0'}"
@@ -137,7 +134,7 @@
 						<Subscribe attrs={cell.attrs()} let:attrs>
 							<Table.Cell
 								{...attrs}
-								class="last:text-right not-first-last:w-full first-last:text-nowrap"
+								class="last:text-right not-first-last:w-full first-last:text-nowrap nth-last-2:text-nowrap"
 							>
 								<!-- p-0 nth-last-2: -->
 								<Render of={cell.render()} />
@@ -150,4 +147,5 @@
 	</Table.Body>
 </Table.Root>
 
+<DataTableBar {filterValue} />
 <!-- <footer class="flex justify-center border-t px-4 py-1">search | filter | sort</footer> -->

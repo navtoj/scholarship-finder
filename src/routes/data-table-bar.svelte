@@ -4,10 +4,9 @@
 	import type { Writable } from 'svelte/store';
 
 	export let filterValue: Writable<string>;
-	let searchInputValue = '';
 </script>
 
-<div class="flex gap-2 border-b p-2">
+<div class="fixed bottom-0 flex w-full gap-2 bg-background p-1.5">
 	<form
 		class="flex grow gap-2"
 		on:submit|preventDefault={(event) => {
@@ -17,19 +16,17 @@
 			const query = formData.get('query');
 			// make sure query is a string
 			if (typeof query !== 'string') return;
+			// check if same input value
+			if (query === $filterValue) return true;
+			// check if event triggered by button
+			if (event.submitter instanceof HTMLButtonElement) {
+				console.log('Button clicked');
+			}
 			// search for query
 			filterValue.set(query);
 		}}
 	>
-		<Input
-			class=""
-			placeholder="Search scholarships..."
-			type="text"
-			name="query"
-			bind:value={searchInputValue}
-		/>
-		<Button type="submit" variant="secondary" disabled={$filterValue === searchInputValue} class=""
-			>Search</Button
-		>
+		<Input class="" placeholder="Search scholarships..." type="text" name="query" />
+		<Button type="submit" variant="default" class="">Search</Button>
 	</form>
 </div>
