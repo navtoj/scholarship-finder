@@ -4,7 +4,7 @@
 </script>
 
 <header
-	class="sticky top-0 min-h-9 flex items-center justify-between gap-4 border-b bg-background bg-muted/40 px-4"
+	class="sticky top-0 min-h-10 flex items-center justify-between gap-4 border-b bg-muted/40 px-4"
 >
 	<div class="flex h-full items-center text-lg leading-none gap-4">
 		<h1 class="font-semibold">Scholarship Finder</h1>
