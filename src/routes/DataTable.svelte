@@ -17,7 +17,7 @@
 		filter: addTableFilter({
 			fn: ({ filterValue, value }) => value.toLowerCase().includes(filterValue.toLowerCase())
 		}),
-		colFilter: addColumnFilters()
+		// colFilter: addColumnFilters()
 	});
 
 	const columns = table.createColumns([
@@ -82,8 +82,8 @@
 	const { filterValue } = pluginStates.filter;
 	$: console.log('filterValue', $filterValue);
 
-	const { filterValues } = pluginStates.colFilter;
-	$: console.log('filterValues', $filterValues);
+	// const { filterValues } = pluginStates.colFilter;
+	// $: console.log('filterValues', $filterValues);
 </script>
 
 <Table.Root {...$tableAttrs} class="mb-12">

@@ -1,6 +1,7 @@
 import type { Config } from 'tailwindcss';
 import { fontFamily } from 'tailwindcss/defaultTheme';
 import plugin from 'tailwindcss/plugin';
+// import tailwindExtendedShadows from 'tailwind-extended-shadows'
 
 const config = {
 	darkMode: ['class'],
@@ -95,7 +96,8 @@ const config = {
 					}
 				}
 			);
-		})
+		}),
+		require("tailwind-extended-shadows")
 	]
 } as const satisfies Config;
 

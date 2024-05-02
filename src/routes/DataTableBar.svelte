@@ -6,7 +6,7 @@
 	export let filterValue: Writable<string>;
 </script>
 
-<div class="fixed bottom-0 flex w-full gap-2 bg-background p-1.5">
+<div class="fixed bottom-0 flex w-full gap-2 bg-background shadow-sm dark:shadow-accent -shadow-y-[1px] p-1.5">
 	<form
 		class="flex grow gap-2"
 		on:submit|preventDefault={(event) => {
@@ -18,10 +18,6 @@
 			if (typeof query !== 'string') return;
 			// check if same input value
 			if (query === $filterValue) return true;
-			// check if event triggered by button
-			if (event.submitter instanceof HTMLButtonElement) {
-				console.log('Button clicked');
-			}
 			// search for query
 			filterValue.set(query);
 		}}
