@@ -2,7 +2,7 @@
 	import MonitorSmartphone from 'lucide-svelte/icons/monitor-smartphone';
 	import { ModeWatcher } from 'mode-watcher';
 	import '../app.css';
-	import Header from './header.svelte';
+	import Header from './Header.svelte';
 </script>
 
 <ModeWatcher />

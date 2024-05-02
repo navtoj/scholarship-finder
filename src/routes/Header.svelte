@@ -14,8 +14,8 @@
 		>
 	</div>
 	<div class="flex h-full items-center">
-		<Button class="h-6 gap-1.5 px-1.5 py-0" href="https://github.com/navtoj" variant="ghost">
-			Credits
+		<Button class="h-6 gap-1.5 px-1.5 py-0" href="https://github.com/navtoj/scholarship-finder" variant="ghost">
+			GitHub
 			<ExternalLink size="1rem" />
 		</Button>
 	</div>

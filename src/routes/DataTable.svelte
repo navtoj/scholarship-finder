@@ -8,7 +8,7 @@
 	import { createTable, Render, Subscribe } from 'svelte-headless-table';
 	import { addColumnFilters, addSortBy, addTableFilter } from 'svelte-headless-table/plugins';
 	import { readable } from 'svelte/store';
-	import DataTableBar from './data-table-bar.svelte';
+	import DataTableBar from './DataTableBar.svelte';
 
 	export let scholarships: Scholarships;
 
