@@ -9,7 +9,8 @@
 			"command": "cd app && bun install && bun dev",
 			"runOptions": {
 				"runOn": "folderOpen"
-			}
+			},
+			"problemMatcher": []
 		}
 	]
 }
