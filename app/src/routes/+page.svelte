@@ -13,6 +13,7 @@
 		type InitialTableState
 	} from '@tanstack/svelte-table';
 	import type { PageData } from './$types';
+	import Header from './Header.svelte';
 
 	let { data }: { data: PageData } = $props();
 
@@ -70,6 +71,7 @@
 		sorting: [{ id: 'amount', desc: true }],
 		columnOrder: ['type', 'name', 'amount', 'method']
 	};
+	let acceptingApplicationsOnly = $state(false);
 
 	const table = createSvelteTable({
 		data: data.scholarships,
@@ -92,5 +94,6 @@
 </div>
 
 <div class="hidden h-full select-none flex-col md:flex">
+	<Header {table} bind:acceptingApplicationsOnly />
 	<pre>{JSON.stringify($table, null, 2)}</pre>
 </div>
