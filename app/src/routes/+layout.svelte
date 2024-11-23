@@ -1,9 +1,11 @@
 <script lang="ts">
 	import { ModeWatcher } from 'mode-watcher';
+	import 'uno.css';
 	import '../app.css';
+
 	let { children } = $props();
 </script>
 
 <ModeWatcher themeColors={{ dark: 'black', light: 'white' }} />
 
-{@render children()}
+<div class="h-dvh">{@render children()}</div>
