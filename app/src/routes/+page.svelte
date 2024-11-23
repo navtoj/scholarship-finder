@@ -14,6 +14,7 @@
 	} from '@tanstack/svelte-table';
 	import type { PageData } from './$types';
 	import Header from './Header.svelte';
+	import Table from './Table.svelte';
 
 	let { data }: { data: PageData } = $props();
 
@@ -95,5 +96,5 @@
 
 <div class="hidden h-full select-none flex-col md:flex">
 	<Header {table} bind:acceptingApplicationsOnly />
-	<pre>{JSON.stringify($table, null, 2)}</pre>
+	<Table {table} {acceptingApplicationsOnly} />
 </div>
