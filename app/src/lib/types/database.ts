@@ -65,7 +65,8 @@ export const Scholarship = z.object({
 		.array()
 		.nonempty()
 		.nullable(),
-	biography: z.string().nullable()
+	biography: z.string().nullable(),
+	programName: z.string().array().nonempty().nullable()
 });
 export type Scholarship = z.infer<typeof Scholarship>;
 

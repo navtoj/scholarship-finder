@@ -100,18 +100,15 @@
 					<TableCell class="p-0" colspan={row.getAllCells().length}>
 						<div class="flex flex-col gap-5 p-4">
 							<Tabs value="description">
-								<div class="flex gap-x-3">
-									<TabsList class="dark:bg-muted/50 h-8">
-										<TabsTrigger class="text-xs" value="description">Description</TabsTrigger>
-										<TabsTrigger class="text-xs" value="selectionProcess"
-											>Selection Process</TabsTrigger
-										>
-										{#if row.original.biography}
+								<div class="flex gap-3">
+									{#if row.original.biography}
+										<TabsList class="dark:bg-muted/50 h-8">
+											<TabsTrigger class="text-xs" value="description">Description</TabsTrigger>
 											<TabsTrigger class="text-xs" value="biography">Biography</TabsTrigger>
-										{/if}
-									</TabsList>
-									<div class="flex w-full justify-between">
-										<div class="flex gap-x-2">
+										</TabsList>
+									{/if}
+									<div class="flex h-8 w-full justify-between gap-2">
+										<div class="flex gap-2">
 											<Badge class="text-nowrap py-0 capitalize" variant="outline"
 												>{row.original.type}</Badge
 											>
@@ -137,7 +134,7 @@
 												b: { s: number; e: number }
 											) => (a.s === b.s ? a.e - b.e : a.s - b.s)}
 
-											<div class="flex gap-x-2">
+											<div class="flex gap-2">
 												{#if !availableDates.length}
 													{#each row.original.applicationsAccepted.toSorted(dateRangeSorter) as { start, end }}
 														{@render dateRangeBadge(start, end, true)}
@@ -152,11 +149,8 @@
 									</div>
 								</div>
 
-								<TabsContent value="description">
+								<TabsContent class={row.original.biography ? '' : ''} value="description">
 									{@render multilineInfo(row.original.description)}
-								</TabsContent>
-								<TabsContent value="selectionProcess">
-									{@render multilineInfo(row.original.selectionProcess)}
 								</TabsContent>
 								{#if row.original.biography}
 									<TabsContent value="biography">
@@ -164,6 +158,20 @@
 									</TabsContent>
 								{/if}
 							</Tabs>
+							<div class="flex flex-col gap-2">
+								<p><small class="text-sm font-medium leading-none">Selection Process</small></p>
+								<p>{row.original.selectionProcess}</p>
+							</div>
+							{#if row.original.programName}
+								<div class="flex flex-col gap-3">
+									<p><small class="text-sm font-medium leading-none">Programs</small></p>
+									<div class="flex flex-wrap gap-2">
+										{#each row.original.programName as program}
+											<Badge class="text-nowrap" variant="secondary">{program}</Badge>
+										{/each}
+									</div>
+								</div>
+							{/if}
 						</div>
 					</TableCell>
 				</TableRow>
