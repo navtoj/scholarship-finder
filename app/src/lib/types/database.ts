@@ -3,7 +3,7 @@ import { z } from 'zod';
 const NonEmptyString = z.string().min(1);
 
 export const Scholarship = z.object({
-	code: z.string().length(4),
+	code: NonEmptyString,
 	name: NonEmptyString,
 	type: NonEmptyString,
 	description: NonEmptyString.nullable(),
@@ -65,9 +65,9 @@ export const Scholarship = z.object({
 		.array()
 		.nonempty()
 		.nullable(),
-	biography: z.string().nullable(),
-	programName: z.string().array().nonempty().nullable(),
-	ceremony: NonEmptyString.nullable()
+	ceremony: NonEmptyString.nullable(),
+	biography: NonEmptyString.nullable(),
+	programName: NonEmptyString.array().nonempty().nullable()
 });
 export type Scholarship = z.infer<typeof Scholarship>;
 
