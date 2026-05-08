@@ -6,7 +6,7 @@ export const Scholarship = z.object({
 	code: z.string().length(4),
 	name: NonEmptyString,
 	type: NonEmptyString,
-	description: NonEmptyString,
+	description: NonEmptyString.nullable(),
 	applicationRequiresAdditionalDocumentation: z.boolean(),
 	amount: z
 		.string()
@@ -20,9 +20,9 @@ export const Scholarship = z.object({
 			return Number(v);
 		})
 		.nullable(),
-	selectionProcess: NonEmptyString,
-	applicationMethod: NonEmptyString,
-	applyTo: NonEmptyString,
+	selectionProcess: NonEmptyString.nullable(),
+	applicationMethod: NonEmptyString.nullable(),
+	applyTo: NonEmptyString.nullable(),
 	acceptApplications: z.boolean(),
 	applicationsAccepted: z
 		.string()
@@ -66,7 +66,8 @@ export const Scholarship = z.object({
 		.nonempty()
 		.nullable(),
 	biography: z.string().nullable(),
-	programName: z.string().array().nonempty().nullable()
+	programName: z.string().array().nonempty().nullable(),
+	ceremony: NonEmptyString.nullable()
 });
 export type Scholarship = z.infer<typeof Scholarship>;
 
